@@ -30,24 +30,15 @@ def plotPoint(x:float,y:float,z:float,name:str = nullcontext,pointColor:str = 'b
     text = str(name) + str('(') + str(x) + ', ' + str(y) + ', ' + str(z) + str(')') 
     ax.text(x, y, z, text, zdir=(1, 1, 1))
 
-
-plt.rcParams["figure.figsize"] = [7.00, 3.50]
-plt.rcParams["figure.autolayout"] = True
-
-x = np.linspace(0, 20, 100)
-y = np.linspace(0, 20, 100)
-
-x, y = np.meshgrid(x, y)
-
 #points on the ground.
 xg1,yg1,zg1 = 7.825,7.5,0
 xg2,yg2,zg2 = 10,12.175,0
 xg3,yg3,zg3 = 12.5,7.5,0
 
 #points on the plane.
-xp1,yp1,zp1 = 9.167,8.94,2
-xp2,yp2,zp2 = 10,10.373,2
-xp3,yp3,zp3 = 10.83,8.94,2
+xp1,yp1,zp1 = 9.167,8.94,10
+xp2,yp2,zp2 = 10,10.373,10
+xp3,yp3,zp3 = 10.83,8.94,10
 
 xg = [xg1,xg2,xg3]
 yg = [yg1,yg2,yg3]
@@ -65,11 +56,22 @@ xl3 = [xp3,xg3]
 yl3 = [yp3,yg3]
 zl3 = [zp3,zg3]
 
+plt.rcParams["figure.figsize"] = [7.00, 3.50]
+plt.rcParams["figure.autolayout"] = True
+
+x = np.linspace(0, 20, 10)
+y = np.linspace(0, 20, 10)
+
+x, y = np.meshgrid(x, y)
+
 eq = equation_plane(xp1,yp1,zp1,xp2,yp2,zp2,xp3,yp3,zp3)
+print(eq)
 
 fig = plt.figure()
 
 ax = fig.gca(projection='3d')
+
+ax.plot((0,0),(0,0),(0,20),'white')
 
 #plot the plane
 ax.plot_surface(x, y, eq)
