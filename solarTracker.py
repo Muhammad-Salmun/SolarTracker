@@ -1,6 +1,8 @@
 from contextlib import nullcontext
 import numpy as np
 import matplotlib.pyplot as plt
+from lineDistance import distance
+from mean import mean
 
 # Function to find equation of plane.
 def equation_plane(x1, y1, z1, x2, y2, z2, x3, y3, z3):
@@ -21,14 +23,12 @@ def equation_plane(x1, y1, z1, x2, y2, z2, x3, y3, z3):
     else: z = 0
     return z
 
-#Function to find equation of a line.
-#def length_line():
-
 #Function to plot a point with cordinate 
 def plotPoint(x:float,y:float,z:float,name:str = nullcontext,pointColor:str = 'black'):
     ax.scatter(x,y,z,c=pointColor,s=10)
     text = str(name) + str('(') + str(x) + ', ' + str(y) + ', ' + str(z) + str(')') 
-    ax.text(x, y, z, text, zdir=(1, 1, 1))
+    ax.text(x, y, z, text, zdir=( 1, 1, 1))
+
 
 #points on the ground.
 xg1,yg1,zg1 = 7.825,7.5,0
@@ -56,6 +56,7 @@ xl3 = [xp3,xg3]
 yl3 = [yp3,yg3]
 zl3 = [zp3,zg3]
 
+#configuration
 plt.rcParams["figure.figsize"] = [7.00, 3.50]
 plt.rcParams["figure.autolayout"] = True
 
@@ -71,6 +72,7 @@ fig = plt.figure()
 
 ax = fig.gca(projection='3d')
 
+#line for 20unit reference in z axis
 ax.plot((0,0),(0,0),(0,20),'white')
 
 #plot the plane
@@ -86,11 +88,18 @@ plotPoint(xp1,yp1,zp1,'Pp1','black')
 plotPoint(xp2,yp2,zp2,'Pp2','black')
 plotPoint(xp3,yp3,zp3,'Pp3','black')
 
+#calculate line length
+tx1 = distance(xl1[0],yl1[0],zl1[0],xl1[1],yl1[1],zl1[1],'line 1')
+tx1 = distance(xl2[0],yl2[0],zl2[0],xl2[1],yl2[1],zl2[1],'line 2')
+tx1 = distance(xl3[0],yl3[0],zl3[0],xl3[1],yl3[1],zl3[1],'line 3')
+
 #plot the lines
 ax.plot(xl1,yl1,zl1,c='black')
+#ax.text(mean(xl1),mean(yl1),mean(zl1),tx1)
 ax.plot(xl2,yl2,zl2,c='black')
 ax.plot(xl3,yl3,zl3,c='black')
 
+#label the axises
 ax.set_xlabel("x axis")
 ax.set_ylabel("y axis")
 ax.set_zlabel("z axis")
