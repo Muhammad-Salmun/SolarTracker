@@ -3,6 +3,7 @@ from lineDistance import distance
 from pointsOnTriangle import pointsOfTriangle
 from drawPlane import equationOfPlane
 from plotPoint import plotPoint
+from angleOfPlane import angleOfPlane
 
 #configuration of matplotlib
 plt.rcParams["figure.figsize"] = [7.00, 3.50]
@@ -19,6 +20,10 @@ xg,yg,zg = pointsOfTriangle(10,10,5,0)
 
 #calculating pojints of contact of panel
 xp,yp,zp = pointsOfTriangle(10,10,2.5,10)
+
+#calculating angle of plane
+angle = angleOfPlane(xp,yp,zp)
+print("angle of plane wrt xy plane is", angle)
 
 #defining starting and ending points of lines
 xl1 = [xp[0],xg[0]]
