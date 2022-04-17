@@ -1,3 +1,4 @@
+from xml.etree.ElementPath import xpath_tokenizer
 import matplotlib.pyplot as plt
 from lineDistance import distance
 from pointsOnTriangle import pointsOfTriangle
@@ -16,10 +17,12 @@ ax.set_ylabel("y axis")
 ax.set_zlabel("z axis")
 
 #calculating points of contact on ground
-xg,yg,zg = pointsOfTriangle(10,10,5,0)
+xg,yg = pointsOfTriangle(10,10,5)
+zg = [0,0,0]
 
 #calculating pojints of contact of panel
-xp,yp,zp = pointsOfTriangle(10,10,2.5,10)
+xp,yp = pointsOfTriangle(10,10,2.5)
+zp = [2,2,2]
 
 #calculating angle of plane
 angle = angleOfPlane(xp,yp,zp)
@@ -54,9 +57,10 @@ ax.plot(xl2,yl2,zl2,c='black')
 ax.plot(xl3,yl3,zl3,c='black')
 
 #calculate line length
-tx1 = distance(xl1[0],yl1[0],zl1[0],xl1[1],yl1[1],zl1[1],'line 1')
-tx1 = distance(xl2[0],yl2[0],zl2[0],xl2[1],yl2[1],zl2[1],'line 2')
-tx1 = distance(xl3[0],yl3[0],zl3[0],xl3[1],yl3[1],zl3[1],'line 3')
+distanceOfLine1 = distance(xl1[0],yl1[0],zl1[0],xl1[1],yl1[1],zl1[1],'line 1')
+distanceOfLine2 = distance(xl2[0],yl2[0],zl2[0],xl2[1],yl2[1],zl2[1],'line 2')
+distanceOfLine3 = distance(xl3[0],yl3[0],zl3[0],xl3[1],yl3[1],zl3[1],'line 3')
+
 
 #calculating the equation of plane
 x,y,z = equationOfPlane(xp,yp,zp)

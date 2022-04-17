@@ -1,4 +1,6 @@
+import imp
 import numpy as np
+import math
 
 def unit_vector(vector):
     """ Returns the unit vector of the vector.  """
@@ -31,9 +33,11 @@ def angleOfPlane(x, y, z):
         
         unitVectorOnXYPlane = np.array([1,1,0])
 
-        angle = angleBetween(unitVecotrOfNormal,unitVectorOnXYPlane)
+        angleRadians = angleBetween(unitVecotrOfNormal,unitVectorOnXYPlane)
 
-        return angle
+        angleDegree = math.degrees(angleRadians)
+
+        return angleDegree
 
 
         
