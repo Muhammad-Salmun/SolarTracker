@@ -1,41 +1,48 @@
-import matplotlib.pyplot as plt
 import numpy as np
+from pointsOnTriangle import pointsOfTriangle
 
-#configuration of matplotlib
-plt.rcParams["figure.figsize"] = [7.00, 3.50]
-plt.rcParams["figure.autolayout"] = True
-fig = plt.figure()
-ax = fig.gca(projection='3d')
-#label the axises
-ax.set_xlabel("x axis")
-ax.set_ylabel("y axis")
-ax.set_zlabel("z axis")
+rotationalVector = [[1.00, 0.00, 0.00], [0.00, 1.00, 0.00], [0.00, 0.00, 1.00]]
 
-# desired inputs
-p = np.array([[2.0],[4.0],[10.0]])
-R = np.array([[1.0,0.0,0.0], [0.0,1.0,0.0], [0.0,0.0,1.0]])
+def pistonPlanePosition(xOfCentre,yOfCentre, panelHeight: float, baseToPanelRatio ):
 
-# constant param
-a1 = np.array([[7.5],  [7.8],  [0.0]])
-a2 = np.array([[10.0], [12.1], [0.0]])
-a3 = np.array([[12.5], [7.8],  [0.0]])
+    #calculating points of contact on ground
+    xg,yg = pointsOfTriangle(xOfCentre, yOfCentre,5)
+    zg = [0,0,0]
 
-b1 = np.array([[8.7],  [8.9],  [5.0]])
-b2 = np.array([[10],   [11],   [5.0]])
-b3 = np.array([[11.2], [8.9],  [5.0]])
+    #piston mount points onthe ground
+    pistonGroundPointVector1 = np.array([[xg[0]],[yg[0]],[zg[0]]])
+    pistonGroundPointVector2 = np.array([[xg[1]],[yg[1]],[zg[1]]])
+    pistonGroundPointVector3 = np.array([[xg[2]],[yg[2]],[zg[2]]])
 
-# piston vector as output
-s1 = p + np.dot(R,b1) - a1
-s2 = p + np.dot(R,b2) - a2
-s3 = p + np.dot(R,b3) - a3
+    #plane center point
+    planeCentrePointVector = np.array([[xOfCentre],[yOfCentre],[panelHeight]])
 
-#calculating length of piston from vector
-s1_length = np.sqrt(s1[0]**2 + s1[1]**2)
-s2_length = np.sqrt(s2[0]**2 + s2[1]**2)
-s3_length = np.sqrt(s3[0]**2 + s3[1]**2)
+    #plane points with respect to plane center point
+    xp,yp = pointsOfTriangle(0,0,5*baseToPanelRatio)
+    zp = 0,0,0
+    pistonPlanePointVector1 = np.array([[xp[0]],[yp[0]],[zp[0]]])
+    pistonPlanePointVector2 = np.array([[xp[1]],[yp[1]],[zp[1]]])
+    pistonPlanePointVector3 = np.array([[xp[2]],[yp[2]],[zp[2]]])
 
-#ax.plot([a1[0], s1[0] + a1[0], p[0], s2[0] + a2[0], a2[0]], [a1[1],s1[1] + a1[1], p[1], s2[1] + a2[1], a2[1]], [a1[2],s1[2] + a1[2], p[2], s2[2] + a2[2], a2[2]])
+    #calculating piston vector
+    pistonVector1 = planeCentrePointVector + np.dot(rotationalVector,pistonPlanePointVector1) - pistonGroundPointVector1
+    pistonVector2 = planeCentrePointVector + np.dot(rotationalVector,pistonPlanePointVector2) - pistonGroundPointVector2
+    pistonVector3 = planeCentrePointVector + np.dot(rotationalVector,pistonPlanePointVector3) - pistonGroundPointVector3
 
-ax.quiver(0,0,0,s1[0],s1[1],s1[2])
+    #calculating piston length
+    pistonLength1 = np.sqrt(pistonVector1[0]**2 + pistonVector1[1]**2 + pistonVector1[2]**2)
+    pistonLength2 = np.sqrt(pistonVector2[0]**2 + pistonVector2[1]**2 + pistonVector2[2]**2)
+    pistonLength3 = np.sqrt(pistonVector3[0]**2 + pistonVector3[1]**2 + pistonVector3[2]**2)
 
-plt.show()
+    print('length of first piston: ', pistonLength1)
+    print('length of second piston: ', pistonLength2)
+    print('length of third piston: ', pistonLength3)
+
+    #calculating coordinates of mounting points of piston on the plane
+    xOfPistons = pistonGroundPointVector1[0][0] + pistonVector1[0][0], pistonGroundPointVector2[0][0] + pistonVector2[0][0], pistonGroundPointVector3[0][0] + pistonVector3[0][0]
+
+    yOfPistons = pistonGroundPointVector1[1][0] + pistonVector1[1][0], pistonGroundPointVector2[1][0] + pistonVector2[1][0], pistonGroundPointVector3[1][0] + pistonVector3[1][0]
+
+    zOfPistons = pistonGroundPointVector1[2][0] + pistonVector1[2][0], pistonGroundPointVector2[2][0] + pistonVector2[2][0], pistonGroundPointVector3[2][0] + pistonVector3[2][0]
+
+    return xOfPistons, yOfPistons, zOfPistons

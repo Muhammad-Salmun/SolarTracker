@@ -14,3 +14,4 @@ def pointsOfTriangle(xOfCentre :float,yOfCenter :float, sideLengthOfTriangle :fl
         yg = [yg1,yg2,yg3]
 
         return xg,yg
+

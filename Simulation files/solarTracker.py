@@ -5,6 +5,7 @@ from pointsOnTriangle import pointsOfTriangle
 from drawPlane import equationOfPlane
 from plotPoint import plotPoint
 from angleOfPlane import angleOfPlane
+from setPistonHeight import pistonPlanePosition
 
 #configuration of matplotlib
 plt.rcParams["figure.figsize"] = [7.00, 3.50]
@@ -20,9 +21,8 @@ ax.set_zlabel("z axis")
 xg,yg = pointsOfTriangle(10,10,5)
 zg = [0,0,0]
 
-#calculating pojints of contact of panel
-xp,yp = pointsOfTriangle(10,10,2.5)
-zp = [2,2,2]
+#calculating points of contact of panel
+xp,yp,zp = pistonPlanePosition(10,10,10,.5)
 
 #calculating angle of plane
 angle = angleOfPlane(xp,yp,zp)
