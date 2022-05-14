@@ -3,6 +3,7 @@ from pointsOnTriangle import pointsOfTriangle
 
 rotationalVector = [[1.00, 0.00, 0.00], [0.00, 1.00, 0.00], [0.00, 0.00, 1.00]]
 
+
 def pistonPlanePosition(xOfCentre,yOfCentre, panelHeight: float, baseToPanelRatio ):
 
     #calculating points of contact on ground
