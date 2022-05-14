@@ -1,31 +1,35 @@
-from xml.etree.ElementPath import xpath_tokenizer
 import matplotlib.pyplot as plt
 from lineDistance import distance
 from pointsOnTriangle import pointsOfTriangle
 from drawPlane import equationOfPlane
 from plotPoint import plotPoint
-from angleOfPlane import angleOfPlane
+from angleOfPlane import angleOfPlaneXY
 from setPistonHeight import pistonPlanePosition
 
 #configuration of matplotlib
 plt.rcParams["figure.figsize"] = [7.00, 3.50]
 plt.rcParams["figure.autolayout"] = True
+#plt.ion()
 fig = plt.figure()
 ax = fig.gca(projection='3d')
+
 #label the axises
 ax.set_xlabel("x axis")
 ax.set_ylabel("y axis")
 ax.set_zlabel("z axis")
+
+#set limit on z axis
+ax.set_zlim3d(0, 20)
 
 #calculating points of contact on ground
 xg,yg = pointsOfTriangle(10,10,5)
 zg = [0,0,0]
 
 #calculating points of contact of panel
-xp,yp,zp = pistonPlanePosition(10,10,10,.5)
+xp,yp,zp = pistonPlanePosition(10,10,10,0.5)
 
 #calculating angle of plane
-angle = angleOfPlane(xp,yp,zp)
+angle = angleOfPlaneXY(xp,yp,zp)
 print("angle of plane wrt xy plane is", angle)
 
 #defining starting and ending points of lines
@@ -47,9 +51,9 @@ plotPoint(ax,xg[1],yg[1],zg[1],'Pg2','red')
 plotPoint(ax,xg[2],yg[2],zg[2],'Pg3','red')
 
 #plot points on plane
-plotPoint(ax,xp[0],yp[0],zp[0],'Pp1','black')
-plotPoint(ax,xp[1],yp[1],zp[1],'Pp2','black')
-plotPoint(ax,xp[2],yp[2],zp[2],'Pp3','black')
+plotPoint(ax,xp[0],yp[0],zp[0],'Pp1','red')
+plotPoint(ax,xp[1],yp[1],zp[1],'Pp2','red')
+plotPoint(ax,xp[2],yp[2],zp[2],'Pp3','red')
 
 #plot the lines
 ax.plot(xl1,yl1,zl1,c='black')
@@ -68,7 +72,7 @@ x,y,z = equationOfPlane(xp,yp,zp)
 #plot the plane
 ax.plot_surface(x, y, z)
 
-#line of 20unit for reference in z axis
-ax.plot((0,0),(0,0),(0,20),'white')
+#plt.pause(1)
 
 plt.show()
+

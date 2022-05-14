@@ -1,4 +1,3 @@
-import imp
 import numpy as np
 import math
 
@@ -20,14 +19,14 @@ def angleBetween(v1, v2):
     v2_u = unit_vector(v2)
     return np.arccos(np.clip(np.dot(v1_u, v2_u), -1.0, 1.0))
 
-def angleOfPlane(x, y, z):
+def angleOfPlaneXY(x, y, z):
         A = np.array([x[1]-x[0], y[1]-y[0], z[1]-z[0]])
         B = np.array([x[2]-x[0], y[2]-y[0], z[2]-z[0]])
-        print("vector A is",A)
-        print("vector B is",B)
+        # print("vector A is",A)
+        # print("vector B is",B)
 
         normal = np.cross(A,B)
-        print("normal vector is ",normal)
+        # print("normal vector is ",normal)
 
         unitVecotrOfNormal = unit_vector(normal)
         
@@ -39,6 +38,43 @@ def angleOfPlane(x, y, z):
 
         return angleDegree
 
+def angleOfPlaneXZ(x, y, z):
+        A = np.array([x[1]-x[0], y[1]-y[0], z[1]-z[0]])
+        B = np.array([x[2]-x[0], y[2]-y[0], z[2]-z[0]])
+        # print("vector A is",A)
+        # print("vector B is",B)
+
+        normal = np.cross(A,B)
+        # print("normal vector is ",normal)
+
+        unitVecotrOfNormal = unit_vector(normal)
+        
+        unitVectorOnXYPlane = np.array([1,0,1])
+
+        angleRadians = angleBetween(unitVecotrOfNormal,unitVectorOnXYPlane)
+
+        angleDegree = math.degrees(angleRadians)
+
+        return angleDegree
+
+def angleOfPlaneYZ(x, y, z):
+        A = np.array([x[1]-x[0], y[1]-y[0], z[1]-z[0]])
+        B = np.array([x[2]-x[0], y[2]-y[0], z[2]-z[0]])
+        # print("vector A is",A)
+        # print("vector B is",B)
+
+        normal = np.cross(A,B)
+        # print("normal vector is ",normal)
+
+        unitVecotrOfNormal = unit_vector(normal)
+        
+        unitVectorOnXYPlane = np.array([0,1,1])
+
+        angleRadians = angleBetween(unitVecotrOfNormal,unitVectorOnXYPlane)
+
+        angleDegree = math.degrees(angleRadians)
+
+        return angleDegree
 
         
 
