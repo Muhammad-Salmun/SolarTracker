@@ -14,8 +14,8 @@ xp,yp,zp = pistonPlanePosition(10,10,10,0.5)
 angleXY = angleOfPlane.angleOfPlaneXY(xp,yp,zp)
 print("angle of plane wrt xy plane is", angleXY)
 
-angleYZ = angleOfPlane.angleOfPlaneXY(xp,yp,zp)
+angleYZ = angleOfPlane.angleOfPlaneYZ(xp,yp,zp)
 print("angle of plane wrt yz plane is", angleYZ)
 
-angleXZ = angleOfPlane.angleOfPlaneXY(xp,yp,zp)
+angleXZ = angleOfPlane.angleOfPlaneXZ(xp,yp,zp)
 print("angle of plane wrt xz plane is", angleXZ)
