@@ -2,11 +2,11 @@ import numpy as np
 from pointsOnTriangle import pointsOfTriangle
 from rotatingPanel import rotationalArray
 
-rotationalVector =         [[1.0,0.50,0.50],
-                           [0.50,1.0,0.50],
-                           [0.50,0.50,1.0]]
-
-def pistonPlanePosition(xOfCentre,yOfCentre, panelHeight: float, baseToPanelRatio):
+rotationalVector = rotationalArray()        
+# [[1.0,0.50,0.50],
+#                            [0.50,1.0,0.50],
+#                            [0.50,0.50,1.0]]
+def pistonPlanePosition(xOfCentre,yOfCentre, panelHeight: float, baseToPanelRatio, testNumber):
 
     #calculating points of contact on ground
     xg,yg = pointsOfTriangle(xOfCentre, yOfCentre,5)
@@ -28,12 +28,12 @@ def pistonPlanePosition(xOfCentre,yOfCentre, panelHeight: float, baseToPanelRati
     pistonPlanePointVector3 = np.array([[xp[2]],[yp[2]],[zp[2]]])
 
     #calculating piston vector
-    # pistonVector1 = planeCentrePointVector + np.dot(rotationalVector[0],pistonPlanePointVector1) - pistonGroundPointVector1
-    # pistonVector2 = planeCentrePointVector + np.dot(rotationalVector[0],pistonPlanePointVector2) - pistonGroundPointVector2
-    # pistonVector3 = planeCentrePointVector + np.dot(rotationalVector[0],pistonPlanePointVector3) - pistonGroundPointVector3
-    pistonVector1 = planeCentrePointVector + np.dot(rotationalVector,pistonPlanePointVector1) - pistonGroundPointVector1
-    pistonVector2 = planeCentrePointVector + np.dot(rotationalVector,pistonPlanePointVector2) - pistonGroundPointVector2
-    pistonVector3 = planeCentrePointVector + np.dot(rotationalVector,pistonPlanePointVector3) - pistonGroundPointVector3
+    pistonVector1 = planeCentrePointVector + np.dot(rotationalVector[testNumber],pistonPlanePointVector1) - pistonGroundPointVector1
+    pistonVector2 = planeCentrePointVector + np.dot(rotationalVector[testNumber],pistonPlanePointVector2) - pistonGroundPointVector2
+    pistonVector3 = planeCentrePointVector + np.dot(rotationalVector[testNumber],pistonPlanePointVector3) - pistonGroundPointVector3
+    # pistonVector1 = planeCentrePointVector + np.dot(rotationalVector,pistonPlanePointVector1) - pistonGroundPointVector1
+    # pistonVector2 = planeCentrePointVector + np.dot(rotationalVector,pistonPlanePointVector2) - pistonGroundPointVector2
+    # pistonVector3 = planeCentrePointVector + np.dot(rotationalVector,pistonPlanePointVector3) - pistonGroundPointVector3
 
     #calculating piston length
     pistonLength1 = np.sqrt(pistonVector1[0]**2 + pistonVector1[1]**2 + pistonVector1[2]**2)
