@@ -14,9 +14,8 @@ for testNumber in range(0,9):
         angleXY = angleOfPlane.angleOfPlaneXY(xp,yp,zp)
         print("angle of plane wrt xy plane is", angleXY)
 
-        # angleYZ = angleOfPlane.angleOfPlaneXY(xp,yp,zp)
-        # print("angle of plane wrt yz plane is", angleYZ)
+angleYZ = angleOfPlane.angleOfPlaneYZ(xp,yp,zp)
+print("angle of plane wrt yz plane is", angleYZ)
 
-        # angleXZ = angleOfPlane.angleOfPlaneXY(xp,yp,zp)
-        # print("angle of plane wrt xz plane is", angleXZ)
-
+angleXZ = angleOfPlane.angleOfPlaneXZ(xp,yp,zp)
+print("angle of plane wrt xz plane is", angleXZ)

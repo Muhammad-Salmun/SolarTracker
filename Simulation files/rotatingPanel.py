@@ -8,14 +8,11 @@ rotationArray.append(indentityMatrix)
 finalArray = []
 i = 0
 
-def rotationalArray():
-        for i in range(1,9):
-                val = round(0.1 * i,3)
-                finalArray = [[1.0,val,val],[val,1.0,val],[val,val,1.0]]
-                # print(finalArray)
-                rotationArray.append(finalArray)
-        return rotationArray
-# rotationalArray()
-# print('rotation array :')
-# for x in rotationArray:
-#         print(*x)
+def rotationalArray(pos):
+    for i in range(0,3):
+        finalArray = [[1,i,0],[i,1,i],[i,i,1]]
+        rotationalArray.append(finalArray)
+    return finalArray[pos]
+
+array = rotationalArray(3)
+print(array)
