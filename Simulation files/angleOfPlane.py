@@ -25,14 +25,12 @@ def angleOfPlaneXY(x, y, z):
         # print("vector A is",A)
         # print("vector B is",B)
 
-        normal = np.cross(A,B)
-        # print("normal vector is ",normal)
+        normal = np.cross(B,A)
+        print("normal vector is ",normal)
 
-        unitVecotrOfNormal = unit_vector(normal)
-        
         unitVectorOnXYPlane = np.array([1,1,0])
 
-        angleRadians = angleBetween(unitVecotrOfNormal,unitVectorOnXYPlane)
+        angleRadians = angleBetween(normal,unitVectorOnXYPlane)
 
         angleDegree = math.degrees(angleRadians)
 
@@ -47,11 +45,9 @@ def angleOfPlaneXZ(x, y, z):
         normal = np.cross(A,B)
         # print("normal vector is ",normal)
 
-        unitVecotrOfNormal = unit_vector(normal)
-        
         unitVectorOnXYPlane = np.array([1,0,1])
 
-        angleRadians = angleBetween(unitVecotrOfNormal,unitVectorOnXYPlane)
+        angleRadians = angleBetween(normal,unitVectorOnXYPlane)
 
         angleDegree = math.degrees(angleRadians)
 
@@ -66,11 +62,9 @@ def angleOfPlaneYZ(x, y, z):
         normal = np.cross(A,B)
         # print("normal vector is ",normal)
 
-        unitVecotrOfNormal = unit_vector(normal)
-        
         unitVectorOnXYPlane = np.array([0,1,1])
 
-        angleRadians = angleBetween(unitVecotrOfNormal,unitVectorOnXYPlane)
+        angleRadians = angleBetween(normal,unitVectorOnXYPlane)
 
         angleDegree = math.degrees(angleRadians)
 
