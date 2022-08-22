@@ -3,12 +3,13 @@ from lineDistance import distance
 from pointsOnTriangle import pointsOfTriangle
 from drawPlane import equationOfPlane
 from plotPoint import plotPoint
-from angleOfPlane import angleOfPlaneXY
 from setPistonHeight import pistonPlanePosition_sim
+from planeOrientation import planeOrientation
 
 #configuration of matplotlib
 plt.rcParams["figure.figsize"] = [7.00, 3.50]
 plt.rcParams["figure.autolayout"] = True
+
 #plt.ion()
 fig = plt.figure()
 ax = fig.gca(projection='3d')
@@ -29,9 +30,9 @@ for testNumber in range(0,1):
         #calculating points of contact of panel
         xp,yp,zp = pistonPlanePosition_sim(10,10,10,0.5,0.5)
 
-        #calculating angle of plane
-        angle = angleOfPlaneXY(xp,yp,zp)
-        print("angle of plane wrt xy plane is", angle)
+        #calculating azimuth and altitude angles
+        azimuthAngle, elevationAngle = planeOrientation(xp ,yp ,zp)
+        print('azimuth: ',azimuthAngle,'altitude: ', elevationAngle)
 
         #defining starting and ending points of lines
         xl1 = [xp[0],xg[0]]
@@ -61,11 +62,14 @@ for testNumber in range(0,1):
         ax.plot(xl2,yl2,zl2,c='black')
         ax.plot(xl3,yl3,zl3,c='black')
 
+        #plot nomral
+        # plotPoint(ax,normalOfPlane[0]+10,normalOfPlane[1]+10,normalOfPlane[2]+10,'Pp3','yellow')
+        # ax.plot([normalOfPlane[0],0],[normalOfPlane[1],0],[normalOfPlane[2],0],c='blue')
+
         #calculate line length
         distanceOfLine1 = distance(xl1[0],yl1[0],zl1[0],xl1[1],yl1[1],zl1[1],'line 1')
         distanceOfLine2 = distance(xl2[0],yl2[0],zl2[0],xl2[1],yl2[1],zl2[1],'line 2')
         distanceOfLine3 = distance(xl3[0],yl3[0],zl3[0],xl3[1],yl3[1],zl3[1],'line 3')
-
 
         #calculating the equation of plane
         x,y,z = equationOfPlane(xp,yp,zp)

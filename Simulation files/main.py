@@ -1,5 +1,6 @@
+# import matplotlib.pyplot as plt
 from pointsOnTriangle import pointsOfTriangle
-import angleOfPlane
+from planeOrientation import planeOrientation
 from setPistonHeight import pistonPlanePosition
 
 #calculating points of contact on ground
@@ -11,21 +12,11 @@ for testNumber in range(0,9):
         print('position: ',testNumber+1)
         try:
                 #calculating points of contact of panel
-                # pistonPlanePosition(xOfCentre, yOfCentre, panelHeight: float, baseToPanelRatio, maxPistonLength, testNumber):
-                xp,yp,zp = pistonPlanePosition(10,10, 20, 0.5, 70, testNumber)
-                # print('xp: ', xp)
-                # print('yp: ', yp)
-                # print('zp: ', zp)
+                xp,yp,zp = pistonPlanePosition(10,10,20,0.5,70,testNumber)
+
+                #calculating azimuth and altitude angles
+                azimuthAngle, elevationAngle = planeOrientation(xp ,yp ,zp)
+                print('azimuth: ',azimuthAngle,'altitude: ', elevationAngle)
+
         except:
                 break
-        #calculating angle of plane 
-        angleXY = angleOfPlane.angleOfPlaneXY(xp,yp,zp)
-        print("angle of plane wrt xy plane is", angleXY)
-
-        angleYZ = angleOfPlane.angleOfPlaneYZ(xp,yp,zp)
-        print("angle of plane wrt yz plane is", angleYZ)
-
-        angleXZ = angleOfPlane.angleOfPlaneXZ(xp,yp,zp)
-        print("angle of plane wrt xz plane is", angleXZ)
-
-

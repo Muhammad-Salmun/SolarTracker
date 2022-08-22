@@ -21,7 +21,7 @@ def rotationalArray_sim(pos):
     #     rotationArray.append(finalArray)
     finalArray = [[ 1,       0,    0],
                   [ 0,     1,      0],
-                  [ -pos,     pos,    1]]
+                  [ 0,     pos,      1]]
     return finalArray
 # array = rotationalArray(3)
 # print(array)
