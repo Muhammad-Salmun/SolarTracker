@@ -6,9 +6,9 @@ import rotatingPanel
 #                           [[1.0,0.50,0.50],
 #                            [0.50,1.0,0.50],
 #                            [0.50,0.50,1.0]]
-def pistonPlanePosition(xOfCentre,yOfCentre, panelHeight: float, baseToPanelRatio, maxPistonLength, testNumber):
+def pistonPlanePosition(xOfCentre,yOfCentre, panelHeight: float, baseToPanelRatio, maxPistonLength, theta_x, theta_y):
 
-    rotationalVector = rotatingPanel.rotationalArray(testNumber) 
+    rotationalVector = rotatingPanel.rotationalArray(theta_x, theta_y) 
 
     #calculating points of contact on ground
     xg,yg = pointsOfTriangle(xOfCentre, yOfCentre,5)
@@ -65,9 +65,9 @@ def pistonPlanePosition(xOfCentre,yOfCentre, panelHeight: float, baseToPanelRati
 
     return xOfPistons, yOfPistons, zOfPistons
 
-def pistonPlanePosition_sim(xOfCentre,yOfCentre, panelHeight: float, baseToPanelRatio, testNumber):
+def pistonPlanePosition_sim(xOfCentre,yOfCentre, panelHeight: float, baseToPanelRatio, theta_x, theta_y):
 
-    rotationalVector = rotatingPanel.rotationalArray_sim(testNumber) 
+    rotationalVector = rotatingPanel.rotationalArray_sim(theta_x, theta_y) 
 
     #calculating points of contact on ground
     xg,yg = pointsOfTriangle(xOfCentre, yOfCentre,5)

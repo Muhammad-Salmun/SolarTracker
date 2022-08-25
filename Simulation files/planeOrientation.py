@@ -26,7 +26,7 @@ def quadrantAngle(x, y):
     
     if x != 0 and y != 0:
         angleWithX = math.degrees(np.arctan(y/x))
-        return angleWithX if x > 0 else angleWithX -180 
+        return angleWithX if x > 0 else - 180 -angleWithX
 
 def planeAngle(normal):
     x = normal[0]
@@ -41,7 +41,7 @@ def planeAngle(normal):
 
     #calculating altitude of panel
     altitude = round(quadrantAngle(hypotnuseOfXandY,z),2)
-
+    
     return azimuthAngle, altitude
 
 def planeOrientation(x,y,z):

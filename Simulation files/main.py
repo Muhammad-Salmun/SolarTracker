@@ -12,7 +12,7 @@ for testNumber in range(0,9):
         print('position: ',testNumber+1)
         try:
                 #calculating points of contact of panel
-                xp,yp,zp = pistonPlanePosition(10,10,20,0.5,70,testNumber)
+                xp,yp,zp = pistonPlanePosition(10,10,20,0.5,70,testNumber*5,45)
 
                 #calculating azimuth and altitude angles
                 azimuthAngle, elevationAngle = planeOrientation(xp ,yp ,zp)
