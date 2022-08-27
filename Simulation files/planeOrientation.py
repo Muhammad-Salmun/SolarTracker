@@ -18,15 +18,17 @@ def normalU(x,y,z):
 # caculates the angle wrt axis of variable provided first
 def quadrantAngle(x, y):
     if y == 0:
-        if x >= 0: return 0
-        else: return 180
+        return 180 if x < 0 else 0
     
     if x == 0:
         return 90 if y > 0 else -90
     
-    if x != 0 and y != 0:
-        angleWithX = math.degrees(np.arctan(y/x))
-        return angleWithX if x > 0 else - 180 -angleWithX
+    angleWithX = math.degrees(np.arctan(y/x))
+    if x > 0:
+        return angleWithX
+    
+    if x < 0:
+        return angleWithX + 180 if y > 0 else angleWithX - 180
 
 def planeAngle(normal):
     x = normal[0]
@@ -40,7 +42,7 @@ def planeAngle(normal):
     azimuthAngle = round(quadrantAngle(x,y),2)
 
     #calculating altitude of panel
-    altitude = round(quadrantAngle(hypotnuseOfXandY,z),2)
+    altitude = round(90 - quadrantAngle(hypotnuseOfXandY,z),2)
     
     return azimuthAngle, altitude
 

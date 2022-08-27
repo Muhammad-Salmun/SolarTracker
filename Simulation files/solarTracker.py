@@ -28,7 +28,7 @@ zg = [0,0,0]
 
 for testNumber in range(0,1):
         #calculating points of contact of panel
-        xp,yp,zp = pistonPlanePosition_sim(10,10,10,0.5,45.0,45.0)
+        xp,yp,zp = pistonPlanePosition_sim(10,10,10,0.5,15,0)
 
         #calculating azimuth and altitude angles
         azimuthAngle, elevationAngle = planeOrientation(xp ,yp ,zp)

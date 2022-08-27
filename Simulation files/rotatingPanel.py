@@ -41,7 +41,7 @@ def rotationalArray(theta_x,theta_y):
     return finalArray
 
 
-def rotationalArray_sim(theta_x, theta_y):
+def RxRy_sim(theta_x, theta_y):
     finalArray = [
         [
             round(np.cos(math.radians(theta_y)),3), 
@@ -59,6 +59,26 @@ def rotationalArray_sim(theta_x, theta_y):
             round(np.cos(math.radians(theta_x)) * np.cos(math.radians(theta_y)),3)
         ]
     ]
+    # print(finalArray)
     return finalArray
-# array = rotationalArray(3)
 # print(array)
+
+def RyRx_sim(theta_y, theta_x):
+    finalArray = [
+        [
+            round(np.cos(math.radians(theta_y)),3), 
+            round(np.sin(math.radians(theta_x)) * np.sin(math.radians(theta_y)),3),  
+            round(np.cos(math.radians(theta_x)) * np.sin(math.radians(theta_y)),3)
+        ],
+        [
+            0,
+            round(np.cos(math.radians(theta_x)),3), 
+            round(-np.sin(math.radians(theta_x)),3)
+        ],
+        [
+            round(-np.sin(math.radians(theta_y)),3),
+            round(np.sin(math.radians(theta_x)) * np.cos(math.radians(theta_y)),3),
+            round(np.cos(math.radians(theta_x)) * np.cos(math.radians(theta_y)),3)
+        ]
+    ]
+    return finalArray

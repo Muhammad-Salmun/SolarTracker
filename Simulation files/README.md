@@ -7,3 +7,4 @@ https://www.youtube.com/watch?v=wybp1_htA7k&list=PLT_0lwItn0sAfi3o4xwx-fNfcnbfMr
 
 the piston heights match the ones generated before when the z-coordinate of the plane was given. the additional feature I get is that now i can control the angle at which the plane slants with the help of a 3x3 rotaiontal matrix. for parallel operation it is set as a identity matrix.
 
+the rotational matrix is found out be XY eulers angles

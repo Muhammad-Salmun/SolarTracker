@@ -67,7 +67,7 @@ def pistonPlanePosition(xOfCentre,yOfCentre, panelHeight: float, baseToPanelRati
 
 def pistonPlanePosition_sim(xOfCentre,yOfCentre, panelHeight: float, baseToPanelRatio, theta_x, theta_y):
 
-    rotationalVector = rotatingPanel.rotationalArray_sim(theta_x, theta_y) 
+    rotationalVector = rotatingPanel.RxRy_sim(theta_x, theta_y) 
 
     #calculating points of contact on ground
     xg,yg = pointsOfTriangle(xOfCentre, yOfCentre,5)
