@@ -2,7 +2,7 @@ import math
 
 def cyltoEulerXY(azimuthAngle, altitudeAngle):
         azimuthAngle = math.radians(azimuthAngle)
-        altitudeAngle = math.radians(altitudeAngle)
+        altitudeAngle = math.radians(90 - altitudeAngle)
 
         x = math.cos(azimuthAngle)
         y = math.sin(azimuthAngle)

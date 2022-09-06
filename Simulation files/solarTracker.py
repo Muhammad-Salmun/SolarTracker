@@ -29,7 +29,7 @@ zg = [0,0,0]
 
 for testNumber in range(0,1):
         #calcuating Euler anlges from sensor data
-        theta_x,theta_y = cyltoEulerXY(120,80)
+        theta_x,theta_y = cyltoEulerXY(45,10)
 
         #calculating points of contact of panel
         xp,yp,zp = pistonPlanePosition_sim(10,10,10,0.5,theta_x,theta_y)
@@ -61,10 +61,18 @@ for testNumber in range(0,1):
         plotPoint(ax,xp[1],yp[1],zp[1],'Pp2','red')
         plotPoint(ax,xp[2],yp[2],zp[2],'Pp3','red')
 
-        #plot the lines
+        #plot the lines - 3 arguments with starting and ending points of each coordinates of the line
         ax.plot(xl1,yl1,zl1,c='black')
         ax.plot(xl2,yl2,zl2,c='black')
         ax.plot(xl3,yl3,zl3,c='black')
+
+        # y-axis
+        ax.plot([10,10],[0,20],[0,0],c='yellow')
+        ax.text(10,20,0, '+ve y-axis', zdir=( 1, 1, 1))
+        
+        # x-axis
+        ax.plot([0,20],[10,10],[0,0],c='green')
+        ax.text(20,10,0, '+ve x-axis', zdir=( 1, 1, 1))
 
         #plot nomral
         # plotPoint(ax,normalOfPlane[0]+10,normalOfPlane[1]+10,normalOfPlane[2]+10,'Pp3','yellow')
