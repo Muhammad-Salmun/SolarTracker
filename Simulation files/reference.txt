@@ -1,2 +1,26 @@
 https://www.youtube.com/watch?v=wybp1_htA7k&list=PLT_0lwItn0sAfi3o4xwx-fNfcnbfMrXa7&index=10
 https://drive.google.com/file/d/1LNVHIX4oITMNlznP9h4WyeY17cMPPZ-2/view?usp=sharing
+
+calculating eulerXY angles from azimuth and altitude angles:
+
+consider the plane in its initial position with zero altitude angle or parallel to XY-plane
+the final position of the plane is facing the sun at some azimuthor altitude angles
+if we consider the final and initial opstions of the panel as two cordinates systems, the final postion is obtained after the euler tranformation of x and y axises respectively
+the movement of the unit normal vector of the plane is taken into consideration
+let the initial cordinates of the normal vector be x,y & z
+after euler trasformation  the final cordinates are taken as X,Y & Z
+the final coordinates are obtained after matrix multipllication of initial cordiantes with the rotational matrix, the final rotational matrix is obtained after multiplying Rx(theta_x) and Ry(theta_y), where theta_x and theta_y are angles rotated through each axis respectively.
+source for notes on 3d Rotation_matrix: https://en.wikipedia.org/wiki/Rotation_matrix
+the initial and final coordiantes are written as a 1 x 3 matrix
+[X Y Z]T = RxRy . [x y z]T 
+after close observation its found that the final postion of panel is such that the z axis doesn't change and and the normal lies on the  - axis, hence the X and Y cordinates are zero.
+hence the changing the equation to [0 0 Z]T = RxRy . [x y z]T
+from equating the first and second rows we have obtained the equation for converting x,y & z to euler X & Y angles.
+
+These coordinates can be easily obtained from the given azimuth and altitude angles.
+
+x = cos(azimuthAngle)
+
+y = sin(azimuthAngle)
+
+z = tan(altitudeAngle) 

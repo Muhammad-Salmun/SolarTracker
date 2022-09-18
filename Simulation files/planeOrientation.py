@@ -21,21 +21,21 @@ def quadrantAngle(x, y):
         return 180 if x < 0 else 0
     
     if x == 0:
-        return 90 if y > 0 else -90
+        return 90 if y > 0 else 270
     
     angleWithX = math.degrees(np.arctan(y/x))
     if x > 0:
-        return angleWithX
-    
+        return angleWithX if angleWithX > 0 else 270 - angleWithX
+
     if x < 0:
-        return angleWithX + 180 if y > 0 else angleWithX - 180
+        return angleWithX + 180
 
 def planeAngle(normal):
-    x = normal[0]
-    y = normal[1]
-    z = normal[2]
+
+    x,y,z = normal
+    # print(x,y,z)
     
-    # calculation of projection vecotr or Hypotenuse
+    # calculation of projection vector or Hypotenuse
     hypotnuseOfXandY = math.sqrt(x*x + y*y)
     
     #calculating azimuth angle

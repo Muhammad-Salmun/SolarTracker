@@ -1,18 +1,24 @@
 import math
+import numpy as np
 
 def cyltoEulerXY(azimuthAngle, altitudeAngle):
         azimuthAngle = math.radians(azimuthAngle)
-        altitudeAngle = math.radians(90 - altitudeAngle)
+        # so as to compute the angle from horizontal rather than the vertical i.e z-axis
+        altitudeAngle = math.radians(90 - altitudeAngle) if altitudeAngle < 90 else math.radians(0.1)
+        # altitudeAngle = math.radians(altitudeAngle)
 
         x = math.cos(azimuthAngle)
         y = math.sin(azimuthAngle)
-        z = math.sqrt(x*x + y*y) * math.tan(altitudeAngle)
+        z = math.tan(altitudeAngle)
 
         k = math.sqrt(x*x + z*z)
 
-        theta_x = math.degrees(math.atan(y/k))
-        theta_y = math.degrees(math.atan(-x/z))
+        # theta_x = round(math.degrees(math.atan(y/k)))
+        # theta_y = round(math.degrees(math.atan(-x/z)))
+
+        theta_x = math.atan(y/k)
+        theta_y = math.atan(-x/z)
 
         return theta_x, theta_y
 
-print(cyltoEulerXY(45,45))
+# print(np.round(cyltoEulerXY(45,10)))

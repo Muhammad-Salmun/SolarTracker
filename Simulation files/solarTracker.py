@@ -1,3 +1,4 @@
+from math import radians
 import matplotlib.pyplot as plt
 from lineDistance import distance
 from pointsOnTriangle import pointsOfTriangle
@@ -29,10 +30,10 @@ zg = [0,0,0]
 
 for testNumber in range(0,1):
         #calcuating Euler anlges from sensor data
-        theta_x,theta_y = cyltoEulerXY(45,10)
+        theta_x,theta_y = cyltoEulerXY(-350,10)
 
         #calculating points of contact of panel
-        xp,yp,zp = pistonPlanePosition_sim(10,10,10,0.5,theta_x,theta_y)
+        xp,yp,zp = pistonPlanePosition_sim(10,10,10,0.5,theta_x, theta_y)
 
         #calculating azimuth and altitude angles
         azimuthAngle, elevationAngle = planeOrientation(xp ,yp ,zp)

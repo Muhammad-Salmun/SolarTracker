@@ -101,9 +101,9 @@ def pistonPlanePosition_sim(xOfCentre,yOfCentre, panelHeight: float, baseToPanel
     pistonLength2 = np.sqrt(pistonVector2[0]**2 + pistonVector2[1]**2 + pistonVector2[2]**2)
     pistonLength3 = np.sqrt(pistonVector3[0]**2 + pistonVector3[1]**2 + pistonVector3[2]**2)
 
-    print('length of first piston: ', pistonLength1)
-    print('length of second piston: ', pistonLength2)
-    print('length of third piston: ', pistonLength3)
+    # print('length of first piston: ', pistonLength1)
+    # print('length of second piston: ', pistonLength2)
+    # print('length of third piston: ', pistonLength3)
 
     #calculating coordinates of mounting points of piston on the plane
     xOfPistons = pistonGroundPointVector1[0][0] + pistonVector1[0][0], pistonGroundPointVector2[0][0] + pistonVector2[0][0], pistonGroundPointVector3[0][0] + pistonVector3[0][0]
