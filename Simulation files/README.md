@@ -14,7 +14,8 @@ if theta_y is positive, it tilts to positive x-axis(x > 10) and vice-versa
 
 the input azimuth angles and the output titlting angle showed some variations. and upon further expolorations it shoed the variations where not linear. also couldn't fint the root cause. inverse trignonemtry above 90 degrees gets really confusing.
 
-A graph was plotted between the input and output azimuth angle sand fount the grapph is only linear between 0 to 90 and then from 180 to 360
-
+A graph was plotted between the input and output azimuth angles and found the grapph is linear between 0 to 90 and then from 180 to 360
+between 90 and 180 it was negatively linear
+but somehow 
 
 
